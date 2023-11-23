@@ -1,0 +1,39 @@
+﻿@using ControleDeContatos.Models;
+@model FornecedorModel
+@{
+    ViewData["Title"] = "Criar Novo Fornecedor";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Cadastro de Fornecedor</h1>
+
+</div>
+
+<form asp-controller="FornecedorController1" asp-action="Criar" method="post">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="tel" asp-for="Nome" class="form-control" placeholder="Digite o nome do Fornecedor">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+    <div class="form-group">
+        <label for="Medida">CNPJ</label>
+        <input type="text" asp-for="CNPJ" class="form-control" placeholder="Digite a o CNPJ">
+        @Html.ValidationMessageFor(x => x.CNPJ)
+    </div>
+    <div class="form-group">
+        <label for="Categoria">Telefone</label>
+        <input type="text" asp-for="Telefone" class="form-control" placeholder="Digite a o Telefone do fornecedor">
+        @Html.ValidationMessageFor(x => x.Telefone)
+    </div>
+    <div class="form-group">
+        <label for="Fornecedor">Endereço</label>
+        <input type="text" asp-for="Endereço" class="form-control" placeholder="Digite o Endereço do fornecedor ">
+        @Html.ValidationMessageFor(x => x.Endereço)
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary ">Adicionar</button>
+    <br />
+    <br />
+    <a class="btn btn-secondary" asp-controller="FornecedorController1" asp-action="index" role="button">Voltar</a>
+</form>

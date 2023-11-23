@@ -1,0 +1,70 @@
+﻿@using ControleDeContatos.Models;
+@model List<ContatoModel>
+@{
+    ViewData["Title"] = "Página inicial";
+}
+
+<div class="text-center">
+    <!-- esse trexo do cogigo é para justificar o testo a esquerda -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class=" btn btn-primary" role="button" asp-controller="Contato" asp-action="Criar">Adicionar novo Alimento</a>
+    </div>
+    <br />
+
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if(TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Listagem de Alimetos</h1>
+
+    <table class="table table-Usuario" id="table-Usuario">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Medida</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">QTD_Inicial</th>
+                <th scope="col">Saldo</th>
+                <th scope="col">Data de entrada</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any())
+            {
+                foreach(ContatoModel contato in Model)
+                {
+                    <tr>
+                        <th scope="row">@contato.Id</th>
+                        <td>@contato.Nome</td>
+                        <td>@contato.Medida</td>
+                        
+                        <td>@contato.Fornecedor</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

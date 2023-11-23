@@ -1,0 +1,39 @@
+﻿@using ControleDeContatos.Models;
+@model ContatoModel
+@{
+    ViewData["Title"] = "Criar contato";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Cadastra Alimento</h1>
+
+</div>
+
+<form asp-controller="Contato" asp-action="Criar" method="post">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="tel" asp-for="Nome" class="form-control" placeholder="Digite o nome do Alimento">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+    <div class="form-group">
+        <label for="Medida">Medida</label>
+        <input type="text" asp-for="Medida" class="form-control" placeholder="Digite a Medida">
+        @Html.ValidationMessageFor(x => x.Medida)
+    </div>
+    <div class="form-group">
+        <label for="Categoria">Categoria</label>
+        <input type="text" asp-for="Categoria" class="form-control" placeholder="Digite a Categoria alimentar">
+        @Html.ValidationMessageFor(x => x.Categoria)
+    </div>
+    <div class="form-group">
+        <label for="Fornecedor">Fornecedor</label>
+        <input type="text" asp-for="Fornecedor" class="form-control" placeholder="Digite nome do Fornecedor ">
+        @Html.ValidationMessageFor(x => x.Fornecedor)
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary ">Adicionar</button>
+    <br />
+    <br />
+    <a class="btn btn-secondary" asp-controller="contato" asp-action="index" role="button">Voltar</a>
+</form>
